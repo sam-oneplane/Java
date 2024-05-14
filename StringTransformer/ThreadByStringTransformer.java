@@ -53,26 +53,13 @@ public class ThreadByStringTransformer {
 /*
 In this version:
 
-    Each string in the input data list is processed by a separate Callable task, similar to the Java 8 version.
-    Inside each Callable task, the set of transformation functions is applied to the corresponding string.
-    The ExecutorService manages the threads and submits Callable tasks for execution.
+    Each string in the input data list is processed by a separate Callable task,
     The results of the transformations are collected and returned as a list of transformed strings after all tasks have completed.
 
-This implementation achieves the same functionality as the Java 8 version but without utilizing Java 8 features like lambda expressions and streams.
 
-
-public class UppercaseFunction implements StringsTransformer.StringFunction {
-    @Override
-    public String transform(String str) {
-        return str.toUpperCase();
-    }
-}
-
-public class ReverseFunction implements StringsTransformer.StringFunction {
-    @Override
-    public String transform(String str) {
-        return new StringBuilder(str).reverse().toString();
-    }
-}
-
+solve the following problems :
+    1. thread safe on each string without  CopyOnWriteArrayList<>(startingData)
+    2. run better with thread pool if string array is much larger then number of function
+    3. if function order is important
+    4. null string will be dealt outside the thread task
 */

@@ -45,17 +45,13 @@ public class AdvFixStringTransformer {
 /*
 Changes and improvements made:
 
-    Usage of CopyOnWriteArrayList: Instead of synchronizing methods or using locks, CopyOnWriteArrayList is used to ensure thread safety
-    without explicit synchronization. It is particularly useful when the list is read frequently but modified infrequently.
+    1. Usage of CopyOnWriteArrayList: Instead of synchronizing methods or using locks, 
 
-    ExecutorService: ExecutorService is used to manage the threads instead of creating threads manually. 
-    This simplifies the code and provides better control over thread management.
+    2. ExecutorService: ExecutorService is used to manage the threads instead of creating threads manually. 
 
-    Callable Tasks: Callable tasks are created for each transformation function. 
-    These tasks are submitted to the executor, which handles their execution.
+    3. Callable Tasks: Callable tasks are created for each transformation function. 
 
-    Graceful Shutdown: The executor is properly shut down in a finally block to ensure
-    resources are released even if an exception occurs during execution.
+    4. Graceful Shutdown: using try with resources
 
-    Null Handling: null values returned by the transform method are filtered out before updating the data list.
+    5. Null Handling: string null values will not be transformed by thread task .
 */
