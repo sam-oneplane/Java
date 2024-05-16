@@ -9,12 +9,7 @@ public class Main {
 
         List<String> startingData = Arrays.asList("hello","there", "world");
 
-        AdvFixStringTransformer transformer = new AdvFixStringTransformer(startingData);
-        ThreadByStringTransformer transformer1 = new ThreadByStringTransformer(startingData);
-
-        List<AdvFixStringTransformer.StringFunction> functions = new ArrayList<>();
-        functions.add(new AdvUppercaseFunction());
-        functions.add(new AdvReverseFunction());
+        ThreadByStringTransformer transformer = new ThreadByStringTransformer(startingData);
 
         List<ThreadByStringTransformer.StringFunction> functions1 = new ArrayList<>();
         functions1.add(new ByStrUppercaseFunction());
@@ -22,13 +17,10 @@ public class Main {
 
 
         try {
-            List<String> transformedData = transformer.transform(functions);
-            System.out.println("Thread By Function");
-            System.out.println(transformedData); // Output: [OLLEH, DLROW]
-
+         
             System.out.println("Thread By String");
-            List<String> transformedData1 = transformer1.transform(functions1);
-            System.out.println(transformedData1); // Output: [OLLEH, DLROW]
+            List<String> transformedData = transformer.transform(functions1);
+            System.out.println(transformedData); // Output: [OLLEH, DLROW]
 
         } catch (InterruptedException e) {
             /* handle catch */
